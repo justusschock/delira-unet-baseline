@@ -112,7 +112,13 @@ class UNetTorch(AbstractPyTorchNetwork):
 
         self.conv_final = None
 
-        self._build_model(n_dim=n_dim, num_classes=num_classes,                 in_channels=in_channels, depth=depth, start_filts=start_filts,      norm_layer=norm_layer)
+        self._build_model(
+            n_dim=n_dim,
+            num_classes=num_classes,
+            in_channels=in_channels,
+            depth=depth,
+            start_filts=start_filts,
+            norm_layer=norm_layer)
 
         self.reset_params()
         self.per_class = per_class
@@ -344,9 +350,14 @@ class UNetTorch(AbstractPyTorchNetwork):
 
         self.conv_final = conv1x1(n_dim, outs, num_classes)
 
-   
     @staticmethod
-    def closure(model, data_dict: dict, optimizers: dict, losses={}, fold=0, **kwargs):
+    def closure(
+            model,
+            data_dict: dict,
+            optimizers: dict,
+            losses={},
+            fold=0,
+            **kwargs):
         """
         closure method to do a single backpropagation step
         Parameters
@@ -442,7 +453,6 @@ class UNetTorch(AbstractPyTorchNetwork):
         label = torch.from_numpy(
             batch.pop("label")).to(output_device).to(torch.float)
         return {'data': data, 'label': label, **batch}
-
 
     @staticmethod
     def prepare_batch_multiclass(batch: dict, input_device, output_device):

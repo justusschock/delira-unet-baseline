@@ -1,27 +1,22 @@
+import torch
+from batchgenerators.transforms import RangeTransform, Compose, \
+    ZeroMeanUnitVarianceTransform
+from delira_unet import UNetTorch, RAdam, dice_score_including_background, \
+    SoftDiceLossPyTorch
+from delira.training.callbacks import ReduceLROnPlateauCallbackPyTorch
+from delira.data_loading.sampler import SequentialSampler, RandomSampler
+from delira.data_loading import DataManager
+from delira import get_current_debug_mode
+from delira.utils import DeliraConfig
+from delira.training import PyTorchExperiment
+from sklearn.model_selection import train_test_split
+import os
 import logging
 import sys
 logging.basicConfig(level=logging.INFO,
                     handlers=[logging.StreamHandler(sys.stderr)])
 logger = logging.getLogger("Execute_Logger")
 
-import os
-
-from sklearn.model_selection import train_test_split
-
-from delira.training import PyTorchExperiment
-from delira.utils import DeliraConfig
-from delira import get_current_debug_mode
-from delira.data_loading import DataManager
-from delira.data_loading.sampler import SequentialSampler, RandomSampler
-from delira.training.callbacks import ReduceLROnPlateauCallbackPyTorch
-
-from delira_unet import UNetTorch, RAdam, dice_score_including_background, \
-    SoftDiceLossPyTorch
-
-from batchgenerators.transforms import RangeTransform, Compose, \
-    ZeroMeanUnitVarianceTransform
-
-import torch
 
 # PARAMETERS TO CHANGE:
 # TODO: Paths and create suitable config
@@ -43,7 +38,7 @@ config = DeliraConfig(
         "losses": {
             "ce": torch.nn.CrossEntropyLoss(),
             "soft_dice": SoftDiceLossPyTorch(non_lin=torch.nn.Softmax(dim=1))
-            },
+        },
         "metrics": {"dice": dice_score_including_background},
         "num_epochs": 300,  # number of epochs to train
     },

@@ -40,7 +40,7 @@ def dice_score_including_background(pred, label, bg=False, cls_logging=False,
                                     nan_score=0.0, no_fg_score=0.0):
     """
     Compute dice score 1/n_classes * (2*tp)/(2*tp + fp + fn)
-    
+
     Parameters
     ----------
     pred : np.ndarray

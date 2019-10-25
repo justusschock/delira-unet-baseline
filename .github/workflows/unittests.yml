@@ -36,4 +36,4 @@ jobs:
         token: ${{secrets.CODECOV_TOKEN}} #required
         file: ./coverage.xml #optional
         flags: unittests #optional
-        name: codecov-mymisc #optional
+        name: codecov-py37 #optional

@@ -42,4 +42,5 @@ setup(
     author="Justus Schock",
     author_email="justus.schock@rwth-aachen.de",
     license="BSD-2",
+    packages=find_packages()
 )

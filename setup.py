@@ -29,7 +29,7 @@ readme = read_file(os.path.join(os.path.dirname(__file__), "README.md"))
 
 
 setup(
-    name='template_package',
+    name='unet',
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     url='https://github.com/justusschock/delira-unet-baseline',
@@ -41,5 +41,5 @@ setup(
     python_requires=">=3.5",
     author="Justus Schock",
     author_email="justus.schock@rwth-aachen.de",
-    license="MIT",
+    license="BSD-2",
 )

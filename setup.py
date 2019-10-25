@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 import os
 import re
 
+
 def resolve_requirements(file):
     requirements = []
     with open(file) as f:
@@ -34,8 +35,11 @@ requirements = resolve_requirements(os.path.join(os.path.dirname(__file__),
 
 readme = read_file(os.path.join(os.path.dirname(__file__), "README.md"))
 license = read_file(os.path.join(os.path.dirname(__file__), "LICENSE"))
-_version = find_version(os.path.join(os.path.dirname(__file__), "template-repo",
-                                           "__init__.py"))
+_version = find_version(
+    os.path.join(
+        os.path.dirname(__file__),
+        "template-repo",
+        "__init__.py"))
 
 
 setup(
